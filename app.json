@@ -15,7 +15,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
-        "backgroundColor": "#A52A2A"
+        "backgroundColor": "#FFF8F3"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.ajah.WalletRN"
@@ -32,7 +32,7 @@
         {
           "image": "./assets/images/logo.png",
           "imageWidth": 200,
-          "backgroundColor": "#A52A2A"
+          "backgroundColor": "#FFF8F3"
         }
       ],
       "expo-web-browser"
