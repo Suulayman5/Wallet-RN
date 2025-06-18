@@ -24,7 +24,7 @@ const BalanceCart = ({ summary = DEFAULT_SUMMARY }: IProp) => {
     // Helper function to safely parse and format values
     const formatCurrency = (value: number | string | undefined) => {
         const num = typeof value === 'string' ? parseFloat(value) : Number(value || 0);
-        return `₦ ${num.toFixed(2)}`;
+        return `₦${num.toFixed(2)}`;
     };
     console.log('sumary====>>>>>>>>', summary)
     return (

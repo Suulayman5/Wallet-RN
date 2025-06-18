@@ -6,7 +6,7 @@ import { COLORS } from '@/constants/colors'
 import { formatDate } from '@/lib/utils'
 
 const CATEGORY_ICONS ={
-    "foods & drinks": "fast-food",
+    "Foods & drinks": "fast-food",
     Shopping: "cart",
     Transportation: "car",
     Entertainment: "film",
@@ -22,13 +22,14 @@ interface Iprop {
         title: string
         date: number
         id: string
+        _id: string
         description: string
     },
     onDelete: (id: string)=> void
 }
 
 const TransactionItem = ({item, onDelete}: Iprop) => {
-    const isIncome = item.category === 'income'
+    const isIncome = item.category === 'Income'
     const iconName = CATEGORY_ICONS[item.description] || "pricetag-outline"
     // if (item.description + iconName ) {
         
@@ -40,7 +41,7 @@ const TransactionItem = ({item, onDelete}: Iprop) => {
                 <Ionicons name={iconName} size={22} color={isIncome ? COLORS.income : COLORS.expense}/>
             </View>
             <View style={styles.transactionLeft}>
-                <Text style={styles.transactionTitle}>{item.description}</Text>
+                <Text style={styles.transactionTitle}>{item.title}</Text>
                 <Text style={styles.transactionCategory}>{item.category}</Text>
             </View>
             <View style={styles.transactionRight}>
@@ -50,7 +51,7 @@ const TransactionItem = ({item, onDelete}: Iprop) => {
                 <Text>{formatDate(item.date)}</Text>
             </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.deleteButton} onPress={()=>onDelete(item.id)}>
+        <TouchableOpacity style={styles.deleteButton} onPress={()=>onDelete(item._id)}>
             <Ionicons name='trash-outline' size={20} color={COLORS.expense}/>
         </TouchableOpacity>
     </View>

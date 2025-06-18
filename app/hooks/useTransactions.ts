@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { Alert } from "react-native";
+import { useAuth } from '@clerk/clerk-expo';
 
 
 const API = process.env.EXPO_PUBLIC_API_URL;
-console.log("API URL:", API); 
 export const useTransactions = (userId: string) => {
   const [transactions, setTransactions] = useState([]);
   const [summary, setSummary] = useState({
@@ -13,7 +13,6 @@ export const useTransactions = (userId: string) => {
     expense: 0,
   });
   const [loading, setLoading] = useState(false);
-
   const fetchTransactions = useCallback(async () =>{
     try {
 const response = await axios.get(`${API}/transactions/${userId}`);
@@ -54,6 +53,7 @@ const response = await axios.get(`${API}/transactions/${userId}`);
 
     const deleteTransaction = async (id: string) => {
         try {
+          console.log("the id of the deleted item=======>>>>>>>>>", id)
           await axios.delete(`${API}/transactions/${id}`);
           loadData(); // Refresh data after deletion
           Alert.alert("Success", "Transaction deleted successfully.");
